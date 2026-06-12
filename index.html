@@ -293,12 +293,30 @@ h2.titulo{
 
 /* ---------- TESTIMONIOS ---------- */
 .test-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;margin-top:50px}
-.test-card{
-  border-radius:20px;overflow:hidden;background:#000;position:relative;
-  aspect-ratio:9/16;box-shadow:0 20px 50px -24px rgba(122,39,64,.5);
-  border:5px solid #fff;
+.video-card{
+  display:block;border-radius:18px;overflow:hidden;background:var(--blanco-calido);
+  box-shadow:0 18px 48px -28px rgba(122,39,64,.45);border:1px solid rgba(232,196,203,.6);
+  transition:transform .35s,box-shadow .35s;
 }
-.test-card iframe{width:100%;height:100%;border:0;display:block}
+.video-card:hover{transform:translateY(-5px);box-shadow:0 30px 62px -24px rgba(122,39,64,.55)}
+.video-thumb{position:relative;aspect-ratio:16/9;overflow:hidden;background:linear-gradient(135deg,var(--vino),var(--vino-prof))}
+.video-thumb img{width:100%;height:100%;object-fit:cover;display:block}
+.video-thumb::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(94,29,49,.05),rgba(94,29,49,.5))}
+.video-play{
+  position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);z-index:2;
+  width:64px;height:64px;border-radius:50%;
+  background:rgba(255,250,246,.92);border:1px solid var(--dorado-claro);
+  display:flex;align-items:center;justify-content:center;
+  box-shadow:0 10px 28px -8px rgba(122,39,64,.6);transition:transform .3s;
+}
+.video-card:hover .video-play{transform:translate(-50%,-50%) scale(1.08)}
+.video-play::before{content:"";display:block;width:0;height:0;margin-left:5px;
+  border-style:solid;border-width:12px 0 12px 19px;border-color:transparent transparent transparent var(--vino)}
+.video-info{padding:18px 20px;text-align:center}
+.video-info .v-nombre{font-family:var(--display);color:var(--vino);font-size:1.12rem;line-height:1.25;margin-bottom:12px}
+.video-info .v-link{display:inline-flex;align-items:center;gap:7px;font-family:var(--cuerpo);font-size:.8rem;letter-spacing:.1em;text-transform:uppercase;font-weight:500;color:var(--vino);border:1px solid var(--rosa-viejo);border-radius:50px;padding:9px 20px;transition:.3s}
+.video-card:hover .v-link{background:var(--vino);color:#fff;border-color:var(--vino)}
+.test-videos-nota{text-align:center;margin-top:26px;font-family:var(--cuerpo);font-size:.9rem;color:var(--texto-suave);font-style:italic}
 
 /* ---------- SOBRE SILVINA ---------- */
 .silvina{background:linear-gradient(135deg,#fbeef1,#f4e7f0)}
@@ -684,14 +702,36 @@ footer{background:#2e1620;color:rgba(255,255,255,.7);padding:54px 0 40px;text-al
     <div class="eyebrow">Prueba viva</div>
     <h2 class="titulo">Mujeres que ya vivieron<br>Guardianas del Útero</h2>
     <p class="intro">Escucha la experiencia de mujeres que ya atravesaron este camino de sanación, reconexión y transformación femenina.</p>
+    <!-- Tarjetas de testimonio en video: miniatura de YouTube + enlace que abre el video en nueva pestaña.
+         Para reemplazar un video, cambia el ID de YouTube en la miniatura (i.ytimg.com/vi/ID/hqdefault.jpg)
+         y en el enlace (youtube.com/watch?v=ID). -->
     <div class="test-grid">
-      <div class="test-card"><iframe src="https://www.youtube.com/embed/Z--lQEA8Uz0" title="Testimonio" loading="lazy" allowfullscreen></iframe></div>
-      <div class="test-card"><iframe src="https://www.youtube.com/embed/gxsAXwJ-4wQ" title="Testimonio" loading="lazy" allowfullscreen></iframe></div>
-      <div class="test-card"><iframe src="https://www.youtube.com/embed/L3CXgGINLh0" title="Testimonio" loading="lazy" allowfullscreen></iframe></div>
-      <div class="test-card"><iframe src="https://www.youtube.com/embed/cdzY2KSSzTA" title="Testimonio" loading="lazy" allowfullscreen></iframe></div>
-      <div class="test-card"><iframe src="https://www.youtube.com/embed/nbBF9B2mnzk" title="Testimonio" loading="lazy" allowfullscreen></iframe></div>
-      <div class="test-card"><iframe src="https://www.youtube.com/embed/xhTvoFal0hg" title="Testimonio" loading="lazy" allowfullscreen></iframe></div>
+      <a class="video-card" href="https://www.youtube.com/watch?v=Z--lQEA8Uz0" target="_blank" rel="noopener">
+        <div class="video-thumb"><img src="https://i.ytimg.com/vi/Z--lQEA8Uz0/hqdefault.jpg" alt="Testimonio en video · Guardianas del Útero" loading="lazy"><span class="video-play"></span></div>
+        <div class="video-info"><div class="v-nombre">Testimonio en video</div><span class="v-link">▶ Ver testimonio</span></div>
+      </a>
+      <a class="video-card" href="https://www.youtube.com/watch?v=gxsAXwJ-4wQ" target="_blank" rel="noopener">
+        <div class="video-thumb"><img src="https://i.ytimg.com/vi/gxsAXwJ-4wQ/hqdefault.jpg" alt="Testimonio en video · Guardianas del Útero" loading="lazy"><span class="video-play"></span></div>
+        <div class="video-info"><div class="v-nombre">Testimonio en video</div><span class="v-link">▶ Ver testimonio</span></div>
+      </a>
+      <a class="video-card" href="https://www.youtube.com/watch?v=L3CXgGINLh0" target="_blank" rel="noopener">
+        <div class="video-thumb"><img src="https://i.ytimg.com/vi/L3CXgGINLh0/hqdefault.jpg" alt="Testimonio en video · Guardianas del Útero" loading="lazy"><span class="video-play"></span></div>
+        <div class="video-info"><div class="v-nombre">Testimonio en video</div><span class="v-link">▶ Ver testimonio</span></div>
+      </a>
+      <a class="video-card" href="https://www.youtube.com/watch?v=cdzY2KSSzTA" target="_blank" rel="noopener">
+        <div class="video-thumb"><img src="https://i.ytimg.com/vi/cdzY2KSSzTA/hqdefault.jpg" alt="Testimonio en video · Guardianas del Útero" loading="lazy"><span class="video-play"></span></div>
+        <div class="video-info"><div class="v-nombre">Testimonio en video</div><span class="v-link">▶ Ver testimonio</span></div>
+      </a>
+      <a class="video-card" href="https://www.youtube.com/watch?v=nbBF9B2mnzk" target="_blank" rel="noopener">
+        <div class="video-thumb"><img src="https://i.ytimg.com/vi/nbBF9B2mnzk/hqdefault.jpg" alt="Testimonio en video · Guardianas del Útero" loading="lazy"><span class="video-play"></span></div>
+        <div class="video-info"><div class="v-nombre">Testimonio en video</div><span class="v-link">▶ Ver testimonio</span></div>
+      </a>
+      <a class="video-card" href="https://www.youtube.com/watch?v=xhTvoFal0hg" target="_blank" rel="noopener">
+        <div class="video-thumb"><img src="https://i.ytimg.com/vi/xhTvoFal0hg/hqdefault.jpg" alt="Testimonio en video · Guardianas del Útero" loading="lazy"><span class="video-play"></span></div>
+        <div class="video-info"><div class="v-nombre">Testimonio en video</div><span class="v-link">▶ Ver testimonio</span></div>
+      </a>
     </div>
+    <p class="test-videos-nota">Los videos se abren en una nueva pestaña para una mejor reproducción en celular.</p>
   </div>
 </section>
 
